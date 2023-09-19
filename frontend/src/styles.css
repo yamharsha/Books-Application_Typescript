@@ -1,0 +1,75 @@
+/* You can add global styles to this file, and also import other style files */
+
+
+@font-face {
+    font-family: Poppins;
+    src: url('./assets/fonts/Poppins-Light.ttf');
+    font-weight: 300;
+}
+
+@font-face {
+    font-family: Poppins;
+    src: url('./assets/fonts/Poppins-Regular.ttf');
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: Roboto;
+    src: url('./assets/fonts/Roboto-Bold.ttf');
+    font-weight: bold;
+}
+
+body {
+    font-family: Poppins;
+    min-height: 100vh;
+}
+
+h1,
+h2,
+h3 {
+    font-family: Roboto;
+}
+
+div[ngbDatepickerDayView]:hover,
+div[ngbDatepickerDayView]:active,
+div[ngbDatepickerDayView].active:not(.bg-primary) {
+    background-color: var(--bs-light-bg-subtle) !important;
+}
+
+.ngb-dp-header,
+.ngb-dp-week.ngb-dp-weekdays {
+    background-color: var(--bs-body) !important;
+}
+
+.back-link{
+    text-decoration: none;
+}
+
+.svg-btn {
+    width: 1.1rem;
+    height: 1.1rem;
+}
+
+.svg-pen {
+    mask: url('./assets/icons/pen-solid.svg') no-repeat center;
+}
+
+.svg-trash {
+    mask: url('./assets/icons/trash-can-solid.svg') no-repeat center;
+}
+
+.svg-arrow-left {
+    mask: url('./assets/icons/arrow-left-solid.svg') no-repeat center;
+    width: 1.2rem;
+    height: 1.2rem;
+}
+
+.svg-plus {
+    mask: url('./assets/icons/plus-solid.svg') no-repeat center;
+    width: 1.2rem;
+    height: 1.2rem;
+}
+
+a:hover, .icon-btn:hover {
+    opacity: 0.7;
+}

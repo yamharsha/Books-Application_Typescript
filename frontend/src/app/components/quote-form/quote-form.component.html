@@ -1,0 +1,51 @@
+<main class="bg-secondary-subtle vh-100 d-flex justify-content-center">
+  <div
+    class="border rounded-2 align-self-center bg-body w-100"
+    style="max-width: 30rem"
+  >
+    <div class="border-bottom p-3">
+      <a routerLink="/quotes" class="back-link d-flex align-items-center"
+        ><span class="d-block svg-arrow-left bg-primary"></span>
+        <h6 class="my-0 ms-1 text-primary">Back</h6>
+      </a>
+    </div>
+    <form
+      class="form rounded-0 p-3 align-self-center d-flex flex-column align-items-center"
+      (submit)="onSubmitQuote()"
+    >
+      <h1 class="text-center">{{ formTitle }}</h1>
+      <p class="fw-light text-secondary fs-6">{{ formSubTitle }}</p>
+      <div class="form-group form-group w-100">
+        <label for="quoteText">Quote</label>
+        <textarea
+          class="form-control bg-light-subtle"
+          name="quoteText"
+          id="quoteText"
+          cols="32"
+          placeholder="Write your quote here"
+          [(ngModel)]="inputQuote.quoteText"
+          [defaultValue]="inputQuote.quoteText"
+        ></textarea>
+      </div>
+      <div class="form-group form-group w-100 my-2">
+        <label for="quoteAuthor">Quotee</label>
+        <input
+          class="form-control bg-light-subtle"
+          type="text"
+          [(ngModel)]="inputQuote.quotee"
+          [defaultValue]="inputQuote.quotee"
+          name="quotee"
+          id="quoteAuthor"
+          placeholder="Person who said/worte the quote"
+        />
+      </div>
+      <button
+        type="submit"
+        class="btn btn-primary btn-block my-3 w-100"
+        [disabled]="inputQuote.quoteText === '' || inputQuote.quotee === ''"
+      >
+        Submit
+      </button>
+    </form>
+  </div>
+</main>

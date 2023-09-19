@@ -1,0 +1,84 @@
+<nav
+  ngbNav
+  class="navbar navbar-expand-lg navbar-light bg-body-secondary border-bottom px-2"
+>
+  <!--
+
+  Add icon dropdown for user
+-->
+  <a class="navbar-brand brand" routerLink="/"
+    ><h3 class="m-0">Books&Quotes</h3></a
+  >
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbarColor03"
+    aria-controls="navbarColor03"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+    (click)="isCollapsed = !isCollapsed"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div
+    class="collapse navbar-collapse justify-content-end"
+    id="navbarColor03"
+    [ngbCollapse]="isCollapsed"
+  >
+    <ul ngbNav class="navbar-nav mr-auto gap-2">
+      <li
+        *ngIf="currentUrl === '/quotes'; else urlElse"
+        class="nav-item active"
+      >
+        <a routerLink="/" class="nav-link">My Books</a>
+      </li>
+      <ng-template #urlElse>
+        <li class="nav-item active" *ngIf="authInfo !== null">
+          <a routerLink="/quotes" class="nav-link">My Quotes</a>
+        </li>
+      </ng-template>
+      <li
+        *ngIf="authInfo !== null"
+        class="nav-item diabled d-flex align-items-center gap-1"
+      >
+        <div ngbDropdown class="d-inline-block">
+          <button
+            type="button"
+            class="btn btn-secondary d-flex align-items-center gap-1 dropdown-btn"
+            id="dropdownBasic1"
+            ngbDropdownToggle
+          >
+            <span class="d-block user-svg bg-white"></span>
+            <p class="m-0 px-1 text-capitalize">{{ authInfo.userName }}</p>
+          </button>
+          <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+            <button ngbDropdownItem (click)="onSignOut()">Sign out</button>
+          </div>
+        </div>
+      </li>
+      <li *ngIf="authInfo === null" class="nav-item active">
+        <a routerLink="/sign-in" class="nav-link p-2">Login</a>
+      </li>
+      <li *ngIf="authInfo === null" class="nav-item active">
+        <a routerLink="/sign-up" class="btn btn-secondary">Sign up</a>
+      </li>
+      <li class="nav-item diabled d-flex align-items-center gap-1">
+        <button
+          class="btn btn-dark d-flex flex-row align-items-center gap-2"
+          [title]="toggleTheme ? 'Toggle to lightmode' : 'Toggle to darkmode'"
+          (click)="changeTheme()"
+        >
+          <p class="m-0">Theme</p>
+          <span
+            *ngIf="toggleTheme; else elseTheme"
+            class="d-block sun-svg bg-white"
+          ></span>
+          <ng-template #elseTheme>
+            <span class="d-block moon-svg bg-white"> </span>
+          </ng-template>
+        </button>
+      </li>
+    </ul>
+  </div>
+</nav>

@@ -1,0 +1,6 @@
+.quote-symbol {
+    mask: url('../../../assets/icons/quote-left-solid.svg') no-repeat center;
+    min-width:2.5rem;
+    min-height:2.5rem;
+    opacity: 0.25;
+}

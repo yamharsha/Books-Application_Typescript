@@ -1,0 +1,8 @@
+<ng-container *ngIf="editQuote !== null">
+  <app-quote-form
+    formTitle="Edit Quote"
+    formSubTitle="Edit your quote to update values"
+    [inputQuote]="editQuoteInput"
+    (submitQuote)="submitEditQuote()"
+  />
+</ng-container>

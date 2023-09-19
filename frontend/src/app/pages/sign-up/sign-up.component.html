@@ -1,0 +1,74 @@
+<main class="bg-secondary-subtle vh-100 d-flex justify-content-center">
+  <div
+    class="border rounded-2 align-self-center bg-body w-100"
+    style="max-width: 30rem"
+  >
+    <div class="border-bottom p-3">
+      <a routerLink="/" class="back-link d-flex align-items-center"
+        ><span class="d-block svg-arrow-left bg-primary"></span>
+        <h6 class="my-0 ms-1 text-primary">Back</h6>
+      </a>
+    </div>
+    <form
+      class="form rounded-0 p-3 align-self-center d-flex flex-column align-items-center"
+      (submit)="submitSignUp()"
+    >
+      <h1 class="text-center">Sign Up</h1>
+      <p class="fw-light text-secondary fs-6">
+        Register your username and password
+      </p>
+      <div class="form-group w-100">
+        <label for="userNameInput">Username</label>
+        <input
+          type="text"
+          class="form-control bg-light-subtle"
+          autocomplete="username"
+          name="userName"
+          [(ngModel)]="signUpForm.userName"
+          id="userNameInput"
+          placeholder="Enter Username"
+        />
+      </div>
+      <div class="form-group w-100 my-2">
+        <label for="passwordInput">Password</label>
+        <input
+          type="password"
+          class="form-control bg-light-subtle"
+          id="passwordInput"
+          name="password1"
+          [(ngModel)]="signUpForm.password1"
+          autocomplete="current-password"
+          placeholder="Enter Password"
+        />
+      </div>
+      <div class="form-group w-100">
+        <label for="comrirmPasswordInput">Comfirm password</label>
+        <input
+          type="password"
+          class="form-control bg-light-subtle"
+          id="comrirmPasswordInput"
+          name="password2"
+          [(ngModel)]="signUpForm.password2"
+          autocomplete="current-password"
+          placeholder="Comfirm Password"
+        />
+      </div>
+      <button
+        type="submit"
+        class="btn btn-primary btn-block my-3 w-100"
+        [disabled]="
+          signUpForm.userName === '' ||
+          signUpForm.password1 === '' ||
+          signUpForm.password2 === '' ||
+          signUpForm.password1 !== signUpForm.password2
+        "
+      >
+        Register
+      </button>
+      <p>
+        Have an account?
+        <a routerLink="/sign-in">Sign in</a>
+      </p>
+    </form>
+  </div>
+</main>

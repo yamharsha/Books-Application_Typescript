@@ -1,0 +1,28 @@
+.brand {
+    opacity: 1 !important;
+}
+
+.brand h3 {
+    font-weight: bold;
+}
+
+.user-svg {
+    mask: url('../../../assets/icons/circle-user-solid.svg') no-repeat center;
+    width: 1.5rem;
+    height: 1.5rem;
+    transition: 0.15s ease-in-out;
+}
+
+.moon-svg {
+    mask: url('../../../assets/icons/moon-solid.svg') no-repeat center;
+}
+
+.sun-svg {
+    mask: url('../../../assets/icons/sun-solid.svg') no-repeat center;
+}
+
+.moon-svg,.sun-svg {
+    width: 1.5rem;
+    height: 1.5rem;
+    transition: 0.15s ease-in-out;
+}

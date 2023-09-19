@@ -1,0 +1,67 @@
+<app-nav-bar [authInfo]="authUser" (signOutNav)="userSignOut()" />
+<main>
+  <ng-container *ngIf="authUser !== null">
+    <section class="px-2">
+      <div class="d-flex flex-row align-items-center py-2">
+        <h2 class="me-auto">
+          My {{ listQuotes.length >= 5 ? "5 " : "" }}Favourite Quotes
+        </h2>
+        <button
+          (click)="this.router.navigate(['/add-quote'])"
+          class="btn btn-primary d-flex flex-row align-items-center px-2"
+          [disabled]="listQuotes.length >= 5"
+          title="Add new Quote to table"
+        >
+          <span class="d-block svg-plus bg-white"></span>
+          <p class="m-0 ps-2">Add Quote</p>
+        </button>
+      </div>
+      <ul
+        class="list-group align-items-center"
+        *ngIf="listQuotes.length !== 0; else elseBlock"
+      >
+        <figure
+          class="text-center d-flex flex-column align-items-center bg-light-subtle border p-2 position-relative w-100"
+          style="max-width: 55rem"
+          *ngFor="let quote of listQuotes; index as i"
+        >
+          <span class="button-list align-self-end">
+            <button
+              type="button"
+              class="btn p-1 me-2 icon-btn"
+              title="Edit Quote"
+              (click)="routeToEdit(quote.id)"
+            >
+              <span class="d-block bg-secondary svg-btn svg-pen"></span>
+            </button>
+            <button
+              type="button"
+              class="btn p-1 icon-btn"
+              title="Delete Quote"
+              (click)="deleteQuote(quote.id)"
+            >
+              <span class="d-block bg-danger svg-btn svg-trash"></span>
+            </button>
+          </span>
+          <span
+            class="position-absolute top-0 start-0 p-1 quote-symbol bg-secondary"
+            src="../../../assets/icons/quote-left-solid.svg"
+          ></span>
+          <blockquote class="blockquote py-2">
+            <h5 class="text-center">
+              {{ quote.quoteText }}
+            </h5>
+          </blockquote>
+          <figcaption class="blockquote-footer">
+            <cite [title]="quote.quotee" class="fst-italic fw-light">{{
+              quote.quotee
+            }}</cite>
+          </figcaption>
+        </figure>
+      </ul>
+      <ng-template #elseBlock>
+        <p>There are no Quotes</p>
+      </ng-template>
+    </section>
+  </ng-container>
+</main>

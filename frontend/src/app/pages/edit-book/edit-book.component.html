@@ -1,0 +1,8 @@
+<div *ngIf="editBook !== null">
+  <app-book-form
+    formSubTitle="Edit one book to update book content"
+    formTitle="Edit Book"
+    [bookInput]="editBookInput"
+    (submitBook)="onSubmitEditBook()"
+  />
+</div>

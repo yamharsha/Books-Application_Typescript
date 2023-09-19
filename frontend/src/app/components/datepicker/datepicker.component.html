@@ -1,0 +1,21 @@
+<div class="col-12">
+  <div class="input-group">
+    <input
+      class="form-control date bg-light-subtle"
+      placeholder="yyyy-mm-dd"
+      name="dp"
+      [(ngModel)]="selectedDate"
+      (ngModelChange)="onDateChange()"
+      ngbDatepicker
+      #d="ngbDatepicker"
+    />
+    <button
+      class="btn btn-outline-secondary bi bi-calendar3"
+      (click)="d.toggle()"
+      type="button"
+      title="Open calendar"
+    >
+      <span class="cal-icon d-block"></span>
+    </button>
+  </div>
+</div>

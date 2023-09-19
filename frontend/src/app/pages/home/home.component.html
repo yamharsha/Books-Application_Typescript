@@ -1,0 +1,66 @@
+<app-nav-bar [authInfo]="authUser" (signOutNav)="userSignOut()" />
+<main>
+  <section class="px-2">
+    <div class="d-flex flex-row align-items-center py-2">
+      <h2 class="me-auto">My Books</h2>
+      <span *ngIf="authUser !== null">
+        <a
+          class="btn btn-primary d-flex flex-row align-items-center px-2"
+          routerLink="/add-book"
+          title="Add new Book to table"
+        >
+          <span class="d-block svg-plus bg-white" title="svg plus icon"></span>
+          <p class="m-0 ps-2">Add Book</p>
+        </a>
+      </span>
+    </div>
+    <div *ngIf="listBooks.length !== 0; else elseBlock">
+      <table class="table table-bordered border-secondary">
+        <thead>
+          <tr>
+            <th class="bg-body-secondary" scope="col">#</th>
+            <th class="bg-body-secondary" scope="col">Book title</th>
+            <th class="bg-body-secondary" scope="col">Author</th>
+            <th class="bg-body-secondary" scope="col">Publish Date</th>
+            <th *ngIf="authUser !== null" class="bg-body-secondary" scope="col">
+              Actions
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="fw-light" *ngFor="let singleBook of listBooks; index as i">
+            <th scope="row" class="align-middle">{{ i + 1 }}</th>
+            <td class="align-middle">{{ singleBook.title }}</td>
+            <td class="align-middle">{{ singleBook.author }}</td>
+            <td class="align-middle text-capitalize">
+              {{ returnDateString(singleBook.publishDate) }}
+            </td>
+            <ng-container *ngIf="authUser !== null">
+              <td class="verticle-align">
+                <button
+                  type="button"
+                  class="btn p-1 me-2 icon-btn"
+                  title="Edit book"
+                  (click)="routeToEditBook(singleBook.id)"
+                >
+                  <span class="d-block bg-secondary svg-btn svg-pen"></span>
+                </button>
+                <button
+                  type="button"
+                  class="btn p-1 icon-btn"
+                  title="Delete book"
+                  (click)="deleteBook(singleBook.id)"
+                >
+                  <span class="d-block bg-danger svg-btn svg-trash"></span>
+                </button>
+              </td>
+            </ng-container>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <ng-template #elseBlock>
+      <p>There are no Books</p>
+    </ng-template>
+  </section>
+</main>
